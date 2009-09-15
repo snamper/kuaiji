@@ -1,0 +1,16 @@
+<tr><td class="td27" colspan="2">标题:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'shouwen', 'title',:class => 'txt'  %>
+</td><td class="vtop tips2">标题</td></tr>
+
+<tr><td class="td27" colspan="2">请选择要上传的附件:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= file_field("shouwen", "filename") %>
+</td><td class="vtop tips2"></td>
+</tr>
+
+<tr><td class="td27" colspan="2">内容:</td></tr>
+  <tr class="noborder"><td class="vtop" style="width:100%">
+  <%#= fckeditor_textarea 'shouwen', 'content', :width => '100%', :height => '500px'  %>
+  <%= text_area 'shouwen', 'content', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+  </td><td class="vtop tips2">请输入内容</td></tr>

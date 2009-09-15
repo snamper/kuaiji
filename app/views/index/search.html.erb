@@ -1,0 +1,86 @@
+<TABLE class=LTop1 cellSpacing=0 cellPadding=0 width=760 align=center
+  border=0><TBODY>
+  <TR>
+    <TD class=Box1 vAlign=top width=548 bgColor=#ffffff>
+      <OBJECT
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0
+      height=192 width=546 classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000>
+        <PARAM NAME="movie" VALUE="/image/02.swf"><PARAM NAME="quality" VALUE="high"><PARAM NAME="SCALE" VALUE="exactfit">
+	  <embed src="/image/02.swf" width="546"       height="192"
+      quality="high"
+      								pluginspage="http://www.macromedia.com/go/getflashplayer"
+      								type="application/x-shockwave-flash"
+      scale="exactfit"></embed>						</OBJECT><SPAN class=Box2></SPAN></TD>
+    <TD width="10" rowSpan=2>&nbsp; </TD>
+    <TD class=Box1 vAlign=top align=middle width=202 rowSpan=2>
+      <DIV>
+      <DIV align=left><A href="/index/content/4"><IMG height=28
+      src="/image/ind_007.jpg" width=200 border=0></A></DIV></DIV>
+        <TABLE class=marT_1 cellSpacing=0 cellPadding=2 width="98%" align=center
+      border=0>
+          <TBODY>
+            <TR>
+              <TD class=Col_B1 width="42%" height=32>
+              <P class=Col_B1>为更好地充分利用本学会人才和知识的优势，向有关部门或机构提供更为优质的服务，创新和繁荣学会业务活动，发挥学会在建设领域开展学术探讨、理论研究的领军作用，以便有的放矢地安排一些科研课题和咨询项目，活跃学会的学术活动...</P></TD>
+            </TR>
+            <TR>
+          <TD class=STYLE100></TD></TR></TBODY>
+        </TABLE></TD></TR>
+  <TR></TR></TBODY></TABLE>
+
+<TABLE width="760" border=0 align="center" cellPadding=0 cellSpacing=0 class=TitB1>
+  <TBODY>
+    <% form_tag :action => 'search' do %>
+ <TR>
+      <TD width="330" align=center><table width="98%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td>当前位置：首页&gt;搜索结果</td>
+        </tr>
+      </table></TD>
+      <TD width="165" align=center>请输入您要查找的关键字：</TD>
+      <TD width="199" align=left><input name=title size="22">
+        <input type=hidden value=lawsList
+            name="title"></TD>
+      <TD width="66" align=left><input type="image" src="/image/sear.jpg" width="51" height="22" /></TD>
+    </TR><%end%>
+  <tr><td colspan="3"></TBODY>
+</TABLE>
+<TABLE height=266 cellSpacing=0 cellPadding=0 width=760 align=center
+border=0>
+  <TBODY>
+  <TR>
+    <TD class=Box1 vAlign=top width=230 height=266><img src="/image/falv.jpg" width="230" height="555"></TD>
+    <TD width=10>&nbsp; </TD>
+    <TD width="520" vAlign=top class=Box1>
+      <TABLE class=marT_1 cellSpacing=0 cellPadding=0 width=100% align=center
+      border=0>
+        <TBODY>
+          <TR>
+            <TD class=f14 height=30><TABLE class=marT_1 cellSpacing=2 cellPadding=0 width=100% align=center
+      border=0>
+              <TBODY>
+                <!--列出新闻;-->
+<% for article in @articles  %>
+                <TR>
+                  <TD width=12 height=15 class=f14><IMG height=9
+            src="/image/doc.gif" width=9 align=absMiddle></TD>
+                  <TD class=f14><span class="Col_B1">
+                <a href="/index/show/<%= h article.id %>" target=_blank><%= h article.title %></a></span></TD>
+                  <td align="right">(<%= h article.created_at.strftime('%Y-%m-%d %H:%M:%S') %>)&nbsp;&nbsp;</td>
+                </TR>
+<%end%>
+
+              </TBODY>
+            </TABLE>
+                        <TR>
+                <TD>&nbsp;&nbsp;</TD>
+            </TR>
+          <TR>
+            <TD align="center">共1页&nbsp;&nbsp;首页&nbsp;&nbsp;上一页&nbsp;&nbsp;当前是1页&nbsp;&nbsp;下一页&nbsp;&nbsp;末页</TD>
+                                                  </TR>
+          <TR>
+            <TD align=right height=20>&nbsp;</TD>
+                                                  </TR>
+          </TBODY>
+      </TABLE>      <P>
+      </P></TD></TR></TBODY></TABLE>

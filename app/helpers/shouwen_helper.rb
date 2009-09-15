@@ -1,0 +1,2 @@
+module ShouwenHelper
+end

@@ -1,0 +1,31 @@
+<div class="itemtitle">
+  <h3>收文列表</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/showwen/list"><span>列表</span></a></li>
+    <li><a href="/shouwen/new"><span>登记</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>标题</th><th>登记时间</th><th>状态</th><th>操作</th>
+    </tr>
+    <% for shouwen in @shouwens %>
+      <tr class="hover">
+        <td><%=h shouwen.id %></td>
+        <td><%=h shouwen.title %></td>
+        <td><%=h shouwen.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td>
+          <%  if shouwen.status == 0 %>
+            未发送
+          <%  elsif shouwen.status == 1 %>
+            已发送，待批阅
+          <% else %>已批阅<%  end %>
+        </td>
+        <td>
+          <%= link_to '批阅', :action => 'piyue', :id => shouwen %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>专家</title>
+<style type="text/css">
+<!--
+td {
+	font-size: 13px;
+	color: #333333;
+}
+.pic {
+	padding: 2px;
+	border: 1px solid #CCCCCC;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style>
+</head>
+
+<body>
+<table width="350" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
+  <tr>
+    <td><table width="100%" border="0" cellspacing="1" cellpadding="0">
+      <tr>
+        <td width="24%" rowspan="4" align="center" bgcolor="#FFFFFF"><img src="/upload/zhuanjia/<%=@zhuanjia.photo-%>" width="68" height="84" class="pic" /></td>
+        <td width="41%" height="23" bgcolor="#FFFFFF">&nbsp;姓名：<%=@zhuanjia.name-%></td>
+        <td width="35%" bgcolor="#FFFFFF">&nbsp;性别：<%=@zhuanjia.sex-%></td>
+        </tr>
+      <tr>
+        <td height="23" colspan="2" bgcolor="#FFFFFF">&nbsp;出生日期：<%=@zhuanjia.birthday-%></td>
+      </tr>
+      <tr>
+        <td height="23" colspan="2" bgcolor="#FFFFFF">&nbsp;所属地区：<%=@zhuanjia.diqu%></td>
+      </tr>
+      <tr>
+        <td height="23" bgcolor="#FFFFFF">&nbsp;学历：<%=@zhuanjia.xueli-%></td>
+        <td height="23" bgcolor="#FFFFFF">&nbsp;职称：<%=@zhuanjia.zhicheng.name rescue nil%></td>
+        </tr>
+
+      <tr>
+        <td height="23" colspan="3" bgcolor="#FFFFFF">&nbsp;业务特长：<%=@zhuanjia.techang%></td>
+      </tr>
+      <tr>
+        <td height="23" colspan="3" bgcolor="#FFFFFF">&nbsp;其它特长：<%=@zhuanjia.othertechang%></td>
+      </tr>
+      <tr>
+        <td height="23" colspan="3" bgcolor="#FFFFFF">&nbsp;行业分类：<%=@zhuanjia.hycategory.name rescue nil%></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>

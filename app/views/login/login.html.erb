@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>中国建设会计学会</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="images/admincp/admincp.css" type="text/css" media="all" />
+<meta content="Comsenz Inc." name="Copyright" />
+</head>
+<body>
+<table class="logintb">
+<tr>
+	<td class="login">
+
+		<h1>中国建设会计学会 Control Panel</h1>
+		<p>中国建设会计学会管理平台</p>
+	</td>
+
+	<td>		<% form_tag :action => 'login' do %>
+        <p class="logintitle">
+          <% if flash[:notice]  %>
+      <div style="margin: 5px 0;padding: 5px;background-color: #FF0000;color: #FFFFFF">
+            <%= flash[:notice]  %>
+      </div>
+        <% end  %>
+        </p>
+		<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="58"><span class="logintitle">用户名: </span></td>
+    <td width="142"><span class="loginform">
+      <input name="name" tabindex="1" type="text" class="txt" />
+    </span></td>
+  </tr>
+  <tr>
+    <td><span class="logintitle">密　码:</span></td>
+    <td><span class="loginform">
+      <input name="password" tabindex="1" type="password" class="txt" />
+    </span></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><span class="loginnofloat">
+      <input name="submit" value="登录"  tabindex="3" type="submit" class="btn" />
+    </span></td>
+  </tr>
+</table>
+		<% end  %>
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2" class="footer">
+		<div class="copyright">
+            <p>中国建设会计学会</p>
+			<p>Powered by casc1986.com.cn </p>
+	  </div>
+	</td>
+</tr>
+</table>
+</body>
+</html>

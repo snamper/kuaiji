@@ -1,0 +1,2 @@
+module FawenHelper
+end

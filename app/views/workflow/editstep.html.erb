@@ -1,0 +1,12 @@
+<div class="itemtitle"><h3>修改步骤</h3>
+  <ul class="tab1">
+    <li><a href="/workflow/list"><span>列表</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+<tbody>
+<% form_tag :action => 'savestep', :id => @flowstep do %>
+  <%= render :partial => 'flowform' %>
+<tr><td colspan="2"><input type="submit" value="保存" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

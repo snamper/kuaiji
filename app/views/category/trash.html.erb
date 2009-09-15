@@ -1,0 +1,26 @@
+<div class="itemtitle">
+  <h3>分类管理</h3>
+  <ul class="tab1">
+    <li><a href="/article/trash"><span>新闻</span></a></li>
+    <li class="current"><a href="/category/trash"><span>新闻栏目</span></a></li>
+    <li><a href="/user/trash"><span>用户</span></a></li>
+    <li><a href="/group/trash"><span>用户组</span></a></li>
+    <li><a href="/ziyuan/trash"><span>资源</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>分类名称</th><th>操作</th>
+    </tr>
+    <% for cg in @categories %>
+      <tr class="hover">
+        <td><%=h cg.id %></td>
+        <td><%=h cg.name %></td>
+        <td>
+          <%= link_to '还原', { :action => 'revert', :id => cg }, :confirm => '确认要还原吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

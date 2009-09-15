@@ -1,0 +1,2 @@
+module ScoretypeHelper
+end

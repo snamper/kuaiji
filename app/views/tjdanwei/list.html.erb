@@ -1,0 +1,24 @@
+<div class="itemtitle">
+  <h3>推荐单位管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/tjdanwei/list"><span>列表</span></a></li>
+    <li><a href="/tjdanwei/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>单位名称</th><th>操作</th>
+    </tr>
+    <% for danwei in @tjdanweis %>
+      <tr class="hover">
+        <td><%=h danwei.id %></td>
+        <td><%=h danwei.name %></td>
+        <td>
+          <%= link_to '修改', :action => 'edit', :id => danwei %>
+          <%= link_to '删除', { :action => 'destroy', :id => danwei }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

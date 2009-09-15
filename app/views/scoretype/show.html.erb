@@ -1,0 +1,48 @@
+<div class="itemtitle">
+  <h3>评审项：<%= h  @scoretype.name %></h3>
+    <ul class="tab1">
+    <li><a href="/scoretype/list"><span>返回</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>标准</th><th>分值</th><th>操作</th>
+    </tr>
+<%
+    i = 0
+    for level in @scoretype.scorelevels
+    i += 1
+%>
+      <tr class="hover">
+        <td><%=i.to_s %></td>
+        <td><%=h level.levelname %></td>
+        <td><%=h level.levelvalue %></td>
+        <td>
+          <%= link_to '删除', { :action => 'destroylevel', :id => level }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<div class="itemtitle">
+  <h3>添加新分值项</h3>
+</div>
+<table class="tb tb2">
+  <tbody>
+   <% form_tag :action => 'addlevel' do %>
+    <%=  hidden_field 'scorelevel', 'scoretype_id' %>
+    <tr><td class="td27" colspan="2">标准:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_field 'scorelevel', 'levelname',:class => 'txt'  %>
+    </td><td class="vtop tips2">评分标准，如：很好、一般、较差</td></tr>
+
+    <tr><td class="td27" colspan="2">分值:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_field 'scorelevel', 'levelvalue',:class => 'txt'  %>
+    </td><td class="vtop tips2">评分分值，如：5、10、20，只允许填写数字</td></tr>
+    <tr><td colspan="2"><input type="submit" value="保存" name="settingsubmit" class="btn"/></td></tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,113 @@
+<script src="/js/jquery-latest.js" type="text/javascript"></script>
+<script>
+  var j = jQuery.noConflict();
+  j(document).ready(function(){
+    j("#selgroup").change(function(){
+        j("#recuser").empty();
+        jQuery.getJSON('/user/getuser', {'group_id':this.value}, function(data){
+            jQuery.each(data, function(entryIndex, entry){
+              var html = '<option value="' + entry['user']['id'] + '">';
+              html += entry['user']['name'] + '</option>';
+              j("#recuser").append(html);
+            });
+        });
+    });
+});
+</script>
+<div class="itemtitle">
+  <h3>工作流：<%= h  @workflow.name %></h3>
+    <ul class="tab1">
+    <li><a href="/workflow/list"><span>返回</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>序号</th><th>步骤名</th><th>描述</th><th>负责人</th><th>状态</th><th>操作</th>
+    </tr>
+    <%
+    i = 0
+    for step in @workflow.flowsteps
+      i += 1
+    %>
+      <tr class="hover">
+        <td><%=h i %></td>
+        <td><%=h step.name %></td>
+        <td><%=h step.desc %></td>
+        <td><%=h step.user.realname rescue nil %></td>
+        <td>
+<%
+  if step.endflag == 1
+%>
+已完成
+<%
+  else
+%>
+进行中
+<%
+  end
+%></td>
+        <td>
+          <% 
+            if step.user
+              if @current_user.id == @workflow.user_id
+          %>
+            <%= link_to '修改', :action => 'editstep', :id => step %>
+            <%= link_to '删除', { :action => 'destroystep', :id => step }, :confirm => '确认要删除吗？', :method => :post %>
+          <%
+              elsif @current_user.id == step.user.id
+          %>
+            <%= link_to '修改', :action => 'editstep', :id => step %>
+          <%
+              end
+            end
+          %>
+          
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br />
+<div class="itemtitle">
+  <h3>添加新步骤</h3>
+</div>
+<table class="tb tb2">
+  <tbody>
+   <% form_tag :action => 'addstep' do %>
+    <%=  hidden_field 'flowstep', 'workflow_id' %>
+    
+    <tr><td class="td27" colspan="2">步骤名:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_field 'flowstep', 'name',:class => 'txt'  %>
+    </td><td class="vtop tips2">步骤名</td></tr>
+
+    <tr><td class="td27" colspan="2">步骤描述:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_area 'flowstep', 'desc', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+    </td><td class="vtop tips2">步骤描述</td></tr>
+
+    <tr><td class="td27" colspan="2">负责人:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <select name="sel" id="selgroup">
+      <option value="0">请选择用户组</option>
+      <% for group in @groups %>
+      <option value="<%= h group.id %>"><%= h group.name  %></option>
+      <% end  %>
+    </select>
+  </td><td class="vtop tips2">选择您要发送的用户所在组</td></tr>
+  <tr><td colspan="2" id="userlist"><select id="recuser" name="flowstep[user_id]" size="5" id="select"></select></td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_field 'flowstep', 'username',:class => 'txt'  %>
+    </td><td class="vtop tips2">负责人</td></tr>
+
+    <tr><td class="td27" colspan="2">状态标记:</td></tr>
+    <tr class="noborder"><td class="vtop rowform"> 
+    <ul onmouseover="altStyle(this);">
+      <li><%= radio_button("flowstep", "endflag", "0", :class => 'radio')  %> 进行中</li>
+      <li><%= radio_button("flowstep", "endflag", "1", :class => 'radio')  %> 已完成</li>
+    </ul></td><td class="vtop tips2">结束标记，如果此步骤为最后一步，请选择“已结束”，否则选“未结束”</td></tr>
+    <tr><td colspan="2"><input type="submit" value="保存" name="settingsubmit" class="btn"/></td></tr>
+  <% end %>
+  </tbody>
+</table>

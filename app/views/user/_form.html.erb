@@ -1,0 +1,19 @@
+<tr><td class="td27" colspan="2">用户名:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'user', 'name',:class => 'txt'  %>
+</td><td class="vtop tips2">用户名，可以是英文字母或英文字母和数字混合</td></tr>
+
+<tr><td class="td27" colspan="2">姓名:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'user', 'realname',:class => 'txt'  %>
+</td><td class="vtop tips2">用户的真实姓名</td></tr>
+
+<tr><td class="td27" colspan="2">密码:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= password_field 'user', 'password',:class => 'txt'  %>
+</td><td class="vtop tips2">用户密码</td></tr>
+
+<tr><td class="td27" colspan="2">所属用户组:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= collection_select :user, :group_id, Group.find(:all), :id, :name, {:include_blank => true } %>
+</td><td class="vtop tips2">所属用户组</td></tr>

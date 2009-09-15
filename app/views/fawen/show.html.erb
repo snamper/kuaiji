@@ -1,0 +1,38 @@
+<style type="text/css">
+<!--
+.hongzi {
+	font-size: 12px;
+	color: #FF0000;
+	text-decoration: none;
+}
+-->
+</style>
+<div class="itemtitle"><h3>查看</h3>
+</div>
+<table width="100%" class="tb tb2">
+<tbody>
+
+<tr><td width="11%" align="right" class="td27">标题:</td>
+  <td width="89%" class="td27"><span class="hongzi"><%=@fawen.title%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">编号:</td>
+  <td class="td27"><span class="hongzi"><%=@fawen.code%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">发文对象:</td>
+  <td class="td27"><span class="hongzi"><%=@fawen.receiver%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">查看附件:</td>
+  <td class="td27"><span class="hongzi"><a href="/upload/fawen/<%=@fawen.filename%>" target="_blank"><%=@fawen.filename%></a></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">内容:</td>
+  <td class="td27"><span class="hongzi"><%=@fawen.content%></span></td>
+</tr>
+</tbody></table>

@@ -1,0 +1,25 @@
+<div class="itemtitle">
+  <h3>垃圾箱</h3>
+  <ul class="tab1">
+    <li><a href="/zhuanjia/trash"><span>专家</span></a></li>
+    <li><a href="/zhicheng/trash"><span>职称</span></a></li>
+    <li class="current"><a href="/hycategory/trash"><span>行业分类</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>职称</th><th>操作</th>
+    </tr>
+    <% for cg in @hycategories %>
+      <tr class="hover">
+        <td><%=h cg.id %></td>
+        <td><%=h cg.name %></td>
+        <td>
+          <%= link_to '修改', :action => 'edit', :id => cg %>
+          <%= link_to '删除', { :action => 'destroy', :id => cg }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

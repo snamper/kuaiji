@@ -1,0 +1,29 @@
+<div class="itemtitle">
+  <h3>垃圾箱</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/article/trash"><span>新闻</span></a></li>
+    <li><a href="/category/trash"><span>新闻栏目</span></a></li>
+    <li><a href="/user/trash"><span>用户</span></a></li>
+    <li><a href="/group/trash"><span>用户组</span></a></li>
+    <li><a href="/ziyuan/trash"><span>资源</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>标题</th><th>所属分类</th><th>发布人</th><th>添加时间</th><th>操作</th>
+    </tr>
+    <% for article in @articles %>
+      <tr class="hover">
+        <td><%=h article.id %></td>
+        <td><a href="/index/show/<%=article.id%>" target="_blank"><%=h article.title %></a></td>
+        <td><%=h article.category.name rescue nil %></td>
+        <td><%=h article.author %></td>
+        <td><%=h article.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td>
+          <%= link_to '还原', { :action => 'revert', :id => article }, :confirm => '确认要还原吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,19 @@
+<tr><td class="td27" colspan="2">资源名称:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'ziyuan', 'name',:class => 'txt'  %>
+</td><td class="vtop tips2">资源名称</td></tr>
+
+<tr><td class="td27" colspan="2">URL:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'ziyuan', 'url',:class => 'txt'  %>
+</td><td class="vtop tips2">URL</td></tr>
+
+<tr><td class="td27" colspan="2">顺序:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'ziyuan', 'seq',:class => 'txt'  %>
+</td><td class="vtop tips2">顺序</td></tr>
+
+<tr><td class="td27" colspan="2">上级分类:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= collection_select :ziyuan, :parent_id, Ziyuan.find(:all, :conditions => "parent_id=0"), :id, :name, {:include_blank => true } %>
+</td><td class="vtop tips2">上级分类</td></tr>

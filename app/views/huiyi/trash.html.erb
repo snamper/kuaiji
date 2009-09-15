@@ -1,0 +1,32 @@
+<div class="itemtitle">
+  <h3>会议垃圾箱</h3>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>会议标题</th><th>发布人</th><th>添加时间</th><th>状态</th><th>操作</th>
+    </tr>
+    <% 
+	i = 0
+	for huiyi in @huiyis
+		i += 1
+	%>
+      <tr class="hover">
+        <td><%=h i %></td>
+        <td><%=h huiyi.title %></td>
+        <td><%=h huiyi.author %></td>
+        <td><%=h huiyi.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td>
+          <%  if huiyi.status == 0 %>
+            报名中
+          <% elsif huiyi.status == 2  %>
+            进行中
+          <%  else %>已结束<%  end %>
+        </td>
+        <td>
+          <%= link_to '还原', { :action => 'revert', :id => huiyi }, :confirm => '确认要还原吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

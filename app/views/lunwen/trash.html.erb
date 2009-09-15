@@ -1,0 +1,33 @@
+<div class="itemtitle">
+  <h3>论文管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/lunwen/list"><span>列表</span></a></li>
+    <li><a href="/lunwen/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>序号</th><th>标题</th><th>所属分类</th><th>作者</th><th>作者工作单位</th><th>推荐单位</th><th>总分</th><th>摘要</th><th>操作</th>
+    </tr>
+    <% 
+    i = 0
+    for lunwen in @lunwens
+      i += 1
+    %>
+      <tr class="hover">
+        <td><%=h i %></td>
+        <td><%=h lunwen.title %></td>
+        <td><%=h lunwen.lwcategory.name rescue nil %></td>
+        <td><%=h lunwen.author %></td>
+        <td><%=h lunwen.author_unit %></td>
+        <td><%=h lunwen.tjdanwei.name rescue nil %></td>
+		<td><a href="/lunwen/score/<%=lunwen.id%>"><%=h lunwen.score%>分</a></td>
+        <td><%=h lunwen.content %></td>
+        <td>
+          <%= link_to '还原', { :action => 'revert', :id => lunwen }, :confirm => '确认要还原吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

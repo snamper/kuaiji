@@ -1,0 +1,89 @@
+<script language="javaScript" src="/tree/MzTreeView12.js"></script>
+<style>
+body {font:normal 12px 宋体}
+a.MzTreeview /* TreeView 链接的基本样式 */ { cursor: hand; color: #000080; margin-top: 5px; padding: 2 1 0 2; text-decoration: none; }
+.MzTreeview a.select /* TreeView 链接被选中时的样式 */ { color: highlighttext; background-color: highlight; }
+#kkk input {
+vertical-align:middle;
+}
+.MzTreeViewRow {border:none;width:500px;padding:0px;margin:0px;border-collapse:collapse}
+.MzTreeViewCell0 {border-bottom:1px solid #CCCCCC;padding:0px;margin:0px;}
+.MzTreeViewCell1 {border-bottom:1px solid #CCCCCC;border-left:1px solid #CCCCCC;width:200px;padding:0px;margin:0px;}
+</style>
+
+<input name="ids" id="ids" type="hidden">
+
+<tr><td class="td27" colspan="2">分类名称:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'lwcategory', 'name',:class => 'txt'  %>
+</td><td class="vtop tips2">分类名称</td></tr>
+
+<tr><td class="td27" colspan="2">选择评委:</td></tr>
+<table class='MzTreeViewRow' style="background:#EEEEEE;border-top:1px solid #CCCCCC;"><tr><th class='MzTreeViewCell0'>评委</th><th class='MzTreeViewCell1'>ID</th></tr></table>
+
+<div id="kkk"></div>
+
+
+	<script language="javascript" type="text/javascript">
+	<!--
+	var MzTreeViewTH="<table class='MzTreeViewRow'><tr><td height='20' class='MzTreeViewCell0'>";
+	var MzTreeViewTD="\"</td><td class='MzTreeViewCell1'>\"+ sid +\"</td></tr></table>\"";
+
+	window.tree = new MzTreeView("tree");
+	/*
+	tree.icons["property"] = "property.gif";
+	tree.icons["css"] = "collection.gif";
+	tree.icons["event"] = "collection.gif";
+	tree.icons["book"]  = "book.gif";
+	tree.iconsExpand["book"] = "bookopen.gif"; //展开时对应的图片
+	*/
+	tree.setIconPath("/tree/"); //可用相对路径
+	<% for group in @groups  %>
+      <%
+          #gp = ziyuan.groups.find(@group.id) rescue nil
+          #if gp.nil?
+          #  chk = 0
+          #else
+            chk = 0
+          #end
+        %>
+      tree.N["<%= "0"  %>_g<%= group.id  %>"] = "ctrl:selgroup[];checked:<%=chk%>;T:<%= group.name  %>"
+      <%
+        for user in group.users
+           if user.lwcategory_id == @lwcategory.id
+             chk = 1
+           else
+             chk = 0
+           end
+      %>
+
+        tree.N["g<%= group.id  %>_<%= user.id  %>"] = "ctrl:sel;checked:<%=chk%>;T:<%= user.name %>（<%=user.realname%>）"
+      <%end%>
+    <% end %>
+
+	tree.setURL("#");
+	tree.wordLine = false;
+	tree.setTarget("main");
+	document.getElementById("kkk").innerHTML=tree.toString();
+	tree.expandAll();
+
+	//alert(document.getElementsByTagName("head")[0].innerHTML);
+	//alert(document.getElementById("kkk").innerHTML);
+
+	function showsel()
+	{
+		var es=document.getElementsByName("sel");
+		var out="";
+		for(var i=0;i<es.length;i++)
+		{
+			if (es[i].checked) out+=es[i].value+",";
+		}
+
+        if(out.substr(out.length-1)==",")
+        {
+            out = out.substr(0,out.length-1)
+        }
+        document.getElementById("ids").value = out;
+	}
+	//-->
+	</script>

@@ -1,0 +1,25 @@
+<tr><td class="td27" colspan="2">标题:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'article', 'title',:class => 'txt'  %>
+</td><td class="vtop tips2">新闻标题</td></tr>
+
+<tr><td class="td27" colspan="2">所属栏目:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= collection_select :article, :category_id, Category.find(:all), :id, :name, {:include_blank => true } %>
+</td><td class="vtop tips2">所属栏目</td></tr>
+
+<tr><td class="td27" colspan="2">发布人:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'article', 'author',:class => 'txt'  %>
+</td><td class="vtop tips2">发布人</td></tr>
+
+<tr><td class="td27" colspan="2">摘要:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_area 'article', 'info', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+</td><td class="vtop tips2">摘要</td></tr>
+
+<tr><td class="td27" colspan="2">内容:</td></tr>
+<tr class="noborder"><td class="vtop" style="width:80%">
+<%#= text_area 'article', 'content', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+<%= fckeditor_textarea 'article', 'content', :width => '100%', :height => '500px'  %>
+</td><td class="vtop tips2">内容</td></tr>

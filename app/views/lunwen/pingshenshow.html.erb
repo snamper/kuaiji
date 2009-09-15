@@ -1,0 +1,83 @@
+<script src="/js/jquery-latest.js" type="text/javascript"></script>
+<script>
+  function totalscore() {
+    var total = 0;
+    var form = document.forms[0];
+    for(var i = 0; i < form.elements.length; i++) {
+      var e = form.elements[i];
+      if(e.type.toUpperCase()=="SELECT-ONE"){
+        total += parseInt(e.options[e.selectedIndex].value);
+      }
+    }
+    //alert(total);
+    document.getElementById("score_total_value").value = total;
+  }
+</script>
+<style type="text/css">
+<!--
+.td277 {color: #FF0000}
+-->
+</style>
+
+<div id="sdf" class="itemtitle"><h3>论文评审</h3>
+  <ul class="tab1">
+    <li><a href="/lunwen/list"><span>返回</span></a></li>
+  </ul>
+</div>
+<table width="100%" class="tb tb2">
+<tbody>
+<tr><td width="9%" align="right" class="td27">标题:</td>
+  <td width="91%" class="td277"><span class="vtop rowform STYLE1"><%= h @lunwen.title  %></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">所属分类:</td>
+  <td class="td277"><span class="vtop rowform"><%= h @lunwen.lwcategory.name rescue nil  %></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">作者:</td>
+  <td class="td277"><span class="vtop rowform"><%= h @lunwen.author %></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">推荐单位:</td>
+  <td class="td277"><span class="vtop rowform"><%= h @lunwen.tjdanwei.name rescue nil %></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">附件:</td>
+  <td class="td27"><a href="/upload/lunwen/<%= @lunwen.filepath %>" target="_blank"><%= @lunwen.filepath %></a>（点击下载）</td>
+</tr>
+
+
+<tr><td align="right" class="td27">摘要:</td>
+  <td class="td277"><span class="vtop rowform"><%= h @lunwen.content %></span></td>
+</tr>
+<tr class="noborder"><td colspan="2" class="vtop rowform">&nbsp;</td></tr>
+</tbody></table>
+
+<table class="tb tb2">
+<tbody>
+<% form_tag :controller => 'score', :action => 'create' do %>
+  <%=  hidden_field(:score, :lunwen_id) %>
+<% 
+i = 0
+for stype in @scoretypes
+	i += 1
+%>
+  <tr><td class="td27" colspan="2"><%=i%>. <%= h stype.name  %></td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+    <%= collection_select :scorelevel, :lwcategory_id, stype.scorelevels, :levelvalue, :levelname, {:include_blank => false }, :onchange =>  'totalscore()' %>
+  </td><td class="vtop tips2"><%= h stype.name  %></td></tr>
+<% end  %>
+<tr><td class="td27" colspan="2">总评分：<%=  text_field(:score, :total_value, :readonly => 'readonly') %></td></tr>
+<tr><td valign="top" class="td27">评语:</td></tr>
+<tr><td valign="top" class="td27"><%= text_area :score, :content, :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %></td>
+</tr>
+
+<tr><td colspan="2"><input type="submit" value="提交" name="settingsubmit" class="btn"/></td></tr>
+</tbody>
+<% end  %>
+</table>
+<script>totalscore();</script>

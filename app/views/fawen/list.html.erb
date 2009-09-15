@@ -1,0 +1,30 @@
+<div class="itemtitle">
+  <h3>发文列表</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/fawen/list"><span>列表</span></a></li>
+    <li><a href="/fawen/new"><span>新建发文</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>标题</th><th>编号</th><th>发文时间</th><th>发文对象</th><th>操作</th>
+    </tr>
+    <% for fawen in @fawens %>
+      <tr class="hover">
+        <td><%=h fawen.id %></td>
+        <td><%=h fawen.title %></td>
+        <td><%=h fawen.code %></td>
+        <td><%=h fawen.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%=h fawen.receiver %></td>
+        <td>
+          <%= link_to '查看', :action => 'show', :id => fawen %>
+         <%  if fawen.user_id == session[:user_id] %>
+          <%= link_to '修改', :action => 'edit', :id => fawen %>
+          <%= link_to '删除', { :action => 'destroy', :id => fawen }, :confirm => '确认要删除吗？', :method => :post %>
+         <% end  %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

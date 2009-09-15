@@ -1,0 +1,31 @@
+<tr><td class="td27" colspan="2">姓名:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'baoming', 'name',:class => 'txt'  %>
+</td><td class="vtop tips2">姓名</td></tr>
+
+<tr><td class="td27" colspan="2">性别:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<ul onmouseover="altStyle(this);">
+  <li><%= radio_button("baoming", "sex", "男", :class => 'radio')  %> 男</li>
+  <li><%= radio_button("baoming", "sex", "女", :class => 'radio')  %> 女</li>
+</ul></td><td class="vtop tips2">性别</td></tr>
+
+<tr><td class="td27" colspan="2">工作单位:</td></tr>
+<tr class="noborder"><td class="vtop" style="width:70%">
+<%= text_field 'baoming', 'workunit',:class => 'txt'  %>
+</td><td class="vtop tips2">工作单位</td></tr>
+
+<tr><td class="td27" colspan="2">手机号码:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'baoming', 'phone',:class => 'txt'  %>
+</td><td class="vtop tips2">手机号码</td></tr>
+
+<tr><td class="td27" colspan="2">返程订票:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'baoming', 'ticket',:class => 'txt'  %>
+</td><td class="vtop tips2">返程订票</td></tr>
+
+<tr><td class="td27" colspan="2">备注内容:</td></tr>
+<tr class="noborder"><td class="vtop" style="width:70%">
+<%= text_area 'baoming', 'remark', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+</td><td class="vtop tips2">备注内容</td></tr>

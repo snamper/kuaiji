@@ -1,0 +1,2 @@
+module HycategoryHelper
+end

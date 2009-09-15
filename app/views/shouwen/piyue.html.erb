@@ -1,0 +1,33 @@
+<div id="tt" class="itemtitle"><h3>批阅</h3>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr><td class="td27" colspan="2">标题:</td></tr>
+    <tr class="noborder">
+      <td class="vtop rowform"><%= @shouwen.title rescue nil %></td>
+      <td class="vtop tips2"></td>
+    </tr>
+
+   <tr><td class="td27" colspan="2">附件:</td></tr>
+    <tr class="noborder">
+      <td class="vtop rowform"><a href="/upload/shouwen/<%= @shouwen.filename rescue nil %>" target="_blank"><%= @shouwen.filename rescue nil %></a></td>
+      <td class="vtop tips2"></td>
+    </tr>
+
+    <tr><td class="td27" colspan="2">内容:</td></tr>
+    <tr class="noborder"><td class="vtop rowform"><%= @shouwen.content rescue nil %></td><td class="vtop tips2"></td>
+    </tr>
+  </tbody>
+</table>
+<table class="tb tb2">
+<tbody>
+<% form_tag :action => 'savepiyue', :id => @shouwen do %>
+  <tr><td class="td27" colspan="2">批阅内容:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+      <textarea rows="6" onkeyup="textareasize(this)" name="pycontent" id="shouwen_pycontent" cols="50" class="tarea"><%=@shouwen.pycontent%></textarea>
+  </td></tr>
+
+  <tr><td colspan="2"><input type="submit" value="提交" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody>
+</table>

@@ -1,0 +1,9 @@
+<div class="itemtitle"><h3>修改收文</h3>
+</div>
+<table class="tb tb2">
+<tbody>
+<% form_tag({:action => 'update', :id => @shouwen}, :multipart => true) do %>
+  <%= render :partial => 'form' %>
+<tr><td colspan="2"><input type="submit" value="保存" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

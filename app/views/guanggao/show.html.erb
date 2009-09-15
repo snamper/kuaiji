@@ -1,0 +1,12 @@
+<%= javascript_include_tag :fckeditor  %>
+<div class="itemtitle"><h3>广告管理</h3>
+</div>
+<table class="tb tb2">
+<tbody>
+<% form_tag({:action => 'update', :id => @guanggao}, :multipart => true) do %>
+ <input name="type" type="hidden" value="<%=@type%>">
+<%# form_tag :action => 'update', :id => @guanggao do %>
+  <%= render :partial => 'form' %>
+<tr><td colspan="2"><input type="submit" value="保存" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

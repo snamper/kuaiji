@@ -1,0 +1,2 @@
+module LunwenHelper
+end

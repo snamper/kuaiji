@@ -1,0 +1,40 @@
+<div class="itemtitle">
+  <h3>资源管理</h3>
+  <ul class="tab1">
+    <li><a href="/article/trash"><span>新闻</span></a></li>
+    <li><a href="/category/trash"><span>新闻栏目</span></a></li>
+    <li><a href="/user/trash"><span>用户</span></a></li>
+    <li><a href="/group/trash"><span>用户组</span></a></li>
+    <li class="current"><a href="/ziyuan/trash"><span>资源</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>资源名称</th><th>URL</th><th>顺序</th><th>操作</th>
+    </tr>
+    <% for ziyuan in @ziyuans %>
+      <tr class="hover" bgcolor="#A7DEF3">
+        <td><%=h ziyuan.id %></td>
+        <td><%=h ziyuan.name %></td>
+        <td><%=h ziyuan.url %></td>
+        <td><%=h ziyuan.seq %></td>
+        <td>
+          <%= link_to '还原', { :action => 'revert', :id => ziyuan }, :confirm => '确认要还原吗？', :method => :post %>
+        </td>
+      </tr>
+      <% for child in ziyuan.children %>
+        <tr class="hover">
+        <td></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;|----<%=h child.name %></td>
+        <td><%=h child.url %></td>
+        <td><%=h child.seq %></td>
+        <td>
+          <%= link_to '修改', :action => 'edit', :id => child %>
+          <%= link_to '删除', { :action => 'destroy', :id => child }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+      <% end  %>
+    <% end %>
+  </tbody>
+</table>

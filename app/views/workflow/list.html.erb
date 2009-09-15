@@ -1,0 +1,31 @@
+<div class="itemtitle">
+  <h3>工作管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/workflow/list"><span>列表</span></a></li>
+    <li><a href="/workflow/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>序号</th><th>工作名称</th><th>工作描述</th><th>状态</th><th>操作</th>
+    </tr>
+    <% 
+    i = 0
+    for wf in @workflows
+      i += 1
+    %>
+      <tr class="hover">
+        <td><%=h i %></td>
+        <td><%=h wf.name %></td>
+        <td><%=h wf.desc %></td>
+        <td><%=h wf.flowsteps.find(:all, :conditions => "endflag = 1").size%>/<%=h wf.step_num %></td>
+        <td>
+          <%= link_to '查看', :action => 'show', :id => wf %>
+          <%= link_to '修改', :action => 'edit', :id => wf %>
+          <%= link_to '删除', { :action => 'destroy', :id => wf }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

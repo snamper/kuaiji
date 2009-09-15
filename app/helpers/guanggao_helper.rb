@@ -1,0 +1,2 @@
+module GuanggaoHelper
+end

@@ -1,0 +1,13 @@
+<div class="itemtitle"><h3>修改论文</h3>
+  <ul class="tab1">
+    <li><a href="/lunwen/list"><span>列表</span></a></li>
+    <li><a href="/lunwen/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+<tbody>
+<% form_tag({:action => 'update', :id => @lunwen}, :multipart => true) do %>
+  <%= render :partial => 'form' %>
+<tr><td colspan="2"><input type="submit" value="保存" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

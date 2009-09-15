@@ -1,0 +1,21 @@
+<tr><td class="td27" colspan="2">步骤名:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_field 'flowstep', 'name',:class => 'txt'  %>
+    </td><td class="vtop tips2">步骤名</td></tr>
+
+    <tr><td class="td27" colspan="2">步骤描述:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_area 'flowstep', 'desc', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+    </td><td class="vtop tips2">步骤描述</td></tr>
+
+    <!--<tr><td class="td27" colspan="2">负责人:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <%= text_field 'flowstep', 'username',:class => 'txt'  %>
+    </td><td class="vtop tips2">负责人</td></tr>-->
+
+    <tr><td class="td27" colspan="2">结束标记:</td></tr>
+    <tr class="noborder"><td class="vtop rowform">
+    <ul onmouseover="altStyle(this);">
+      <li><%= radio_button("flowstep", "endflag", "0", :class => 'radio')  %> 未结束</li>
+      <li><%= radio_button("flowstep", "endflag", "1", :class => 'radio')  %> 已结束</li>
+    </ul></td><td class="vtop tips2">结束标记，如果此步骤为最后一步，请选择“已结束”，否则选“未结束”</td></tr>

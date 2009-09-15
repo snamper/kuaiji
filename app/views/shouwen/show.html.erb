@@ -1,0 +1,37 @@
+<%= javascript_include_tag :fckeditor  %>
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+-->
+</style>
+
+<div class="itemtitle"><h3>查看</h3>
+</div>
+<table width="100%" class="tb tb2">
+<tbody>
+
+<tr><td width="13%" align="right" class="td27">标题:</td>
+  <td width="87%" class="td27"><span class="vtop rowform STYLE1"><%=@shouwen.title%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">查看附件:</td>
+  <td class="td27"><span class="vtop rowform STYLE1"><a href="/upload/shouwen/<%=@shouwen.filename%>" target="_blank"><%=@shouwen.filename%></a></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27">内容:</td>
+  <td class="td27"><span class="vtop STYLE1" style="width:100%"><%=@shouwen.content%></span></td>
+</tr>
+  
+<tr><td align="right" class="td27">批阅人:</td>
+  <td class="td27"><span class="vtop rowform STYLE1"><%=@shouwen.user.name rescue nil %></span></td>
+</tr>
+
+<tr><td align="right" class="td27">批阅内容:</td>
+  <td class="td27"><span class="vtop rowform STYLE1"><%=@shouwen.pycontent%></span></td>
+</tr>
+</tbody></table>

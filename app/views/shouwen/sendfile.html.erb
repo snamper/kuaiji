@@ -1,0 +1,56 @@
+<script src="/js/jquery-latest.js" type="text/javascript"></script>
+<script>
+  var j = jQuery.noConflict();
+  j(document).ready(function(){
+    j("#selgroup").change(function(){
+        j("#recuser").empty();
+        jQuery.getJSON('/user/getuser', {'group_id':this.value}, function(data){
+            jQuery.each(data, function(entryIndex, entry){
+              var html = '<option value="' + entry['user']['id'] + '">';
+              html += entry['user']['name'] + '</option>';
+              j("#recuser").append(html);
+            });
+        });
+    });
+});
+</script>
+<div id="tt" class="itemtitle"><h3>发送</h3>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr><td class="td27" colspan="2">标题:</td></tr>
+    <tr class="noborder">
+      <td class="vtop rowform"><%= @shouwen.title rescue nil %></td>
+      <td class="vtop tips2"></td>
+    </tr>
+
+    <tr><td class="td27" colspan="2">附件:</td></tr>
+    <tr class="noborder">
+      <td class="vtop rowform"><a href="/upload/shouwen/<%= @shouwen.filename rescue nil %>" target="_blank"><%= @shouwen.filename rescue nil %></a></td>
+      <td class="vtop tips2"></td>
+    </tr>
+
+    <tr><td class="td27" colspan="2">内容:</td></tr>
+    <tr class="noborder"><td class="vtop rowform"><%= @shouwen.content rescue nil %></td><td class="vtop tips2"></td>
+    </tr>
+  </tbody>
+</table>
+<table class="tb tb2">
+<tbody>
+<% form_tag :action => 'savesend', :id => @shouwen do %>
+  <tr><td class="td27" colspan="2">发送给:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+    <select name="sel" id="selgroup">
+      <option value="0">请选择用户组</option>
+      <% for group in @groups %>
+      <option value="<%= h group.id %>"><%= h group.name  %></option>
+      <% end  %>
+    </select>
+  </td><td class="vtop tips2">选择您要发送的人</td></tr>
+
+  <tr><td colspan="2" id="userlist"><select id="recuser" name="showwen[receive_user_id]" size="5" id="select"></select></td></tr>
+
+  <tr><td colspan="2"><input type="submit" value="提交" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody>
+</table>

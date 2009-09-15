@@ -1,0 +1,24 @@
+<div class="itemtitle"><h3>启动业务</h3>
+</div>
+<table class="tb tb2">
+<tbody>
+<% form_tag :action => 'create' do %>
+
+  <tr><td class="td27" colspan="2">业务选择:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+  <%= collection_select :wenjian, :workflow_id, Workflow.find(:all), :id, :name, {:include_blank => true } %>
+  </td><td class="vtop tips2">选择您要启动的业务</td></tr>
+
+  <tr><td class="td27" colspan="2">标题:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+  <%= text_field 'wenjian', 'title',:class => 'txt'  %>
+  </td><td class="vtop tips2">请输入业务标题</td></tr>
+
+  <tr><td class="td27" colspan="2">内容:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+  <%= text_area 'wenjian', 'content', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+  </td><td class="vtop tips2">请输入业务内容</td></tr>
+
+  <tr><td colspan="2"><input type="submit" value="提交" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

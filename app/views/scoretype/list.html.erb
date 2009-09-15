@@ -1,0 +1,25 @@
+<div class="itemtitle">
+  <h3>评审项管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/scoretype/list"><span>列表</span></a></li>
+    <li><a href="/scoretype/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>评审项</th><th>操作</th>
+    </tr>
+    <% for stype in @scoretypes %>
+      <tr class="hover">
+        <td><%=h stype.id %></td>
+        <td><%=h stype.name %></td>
+        <td>
+          <%= link_to '分值', :action => 'show', :id => stype %>
+          <%= link_to '修改', :action => 'edit', :id => stype %>
+          <%= link_to '删除', { :action => 'destroy', :id => stype }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,25 @@
+<tr><td class="td27" colspan="2">标题:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'fawen', 'title',:class => 'txt'  %>
+</td><td class="vtop tips2">标题</td></tr>
+
+<tr><td class="td27" colspan="2">编号:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'fawen', 'code',:class => 'txt'  %>
+</td><td class="vtop tips2">标题</td></tr>
+
+<tr><td class="td27" colspan="2">发文对象:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_area 'fawen', 'receiver', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+</td><td class="vtop tips2">发文对象，请添加要发给的用户名称</td></tr>
+
+<tr><td class="td27" colspan="2">请选择要上传的附件:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= file_field("fawen", "filename") %>
+</td><td class="vtop tips2"></td>
+</tr>
+
+<tr><td class="td27" colspan="2">内容:</td></tr>
+<tr class="noborder"><td class="vtop" style="width:80%">
+<%= text_area 'fawen', 'content', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+</td><td class="vtop tips2">请输入内容</td></tr>

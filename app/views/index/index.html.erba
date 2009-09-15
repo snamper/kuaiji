@@ -1,0 +1,262 @@
+<script>
+  function loginEmail() {
+    var user = document.getElementById("User").value;
+    var pwd = document.getElementById("Password").value;
+    location.href = "http://mail.casc1986.com.cn:3000/WorldClient.dll?View=Main&User=" + user + "&Password=" + pwd;
+  }
+</script>
+<TABLE class=LTop1 cellSpacing=0 cellPadding=0 width=760 align=center
+  border=0><% form_tag :controller => 'login', :action => 'login' do %>
+
+  <TR>
+    <TD class=Box1 vAlign=top align=right width=200 bgColor=#f7f9ff height=25>
+      <P><IMG height=28 src="/image/ind8.jpg" width=200 border=0>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+      <table width="98%" border="0" cellspacing="3" cellpadding="0">
+        <tr>
+          <td>用户名：</td>
+          <td><INPUT id="User" size=16 name="name" class="kuang"></td>
+        </tr>
+        <tr>
+          <td>密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+          <td><input id="Password" type=password size=16 name="password" class="kuang"></td>
+        </tr>
+        <tr>
+          <td colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td colspan="2"><table width="98%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="center"><INPUT class=form1 type=submit value=登录后台 name=Submit></td>
+              <td align="center"><INPUT class=form1 type=submit value=登录邮箱 name=Submit ONCLICK="loginEmail();return false;"></td>
+            </tr>
+            <!--
+            <tr><td height="5"></td></tr>
+            <tr>
+              <td align="center"><INPUT class=form1 type=submit value=登录商城 name=Submit ONCLICK="location.href='http://shop.casc1986.com.cn';return false;"></td>
+              <td align="center"><INPUT class=form1 type=submit value=登录论坛 name=Submit ONCLICK="location.href='http://bbs.casc1986.com.cn/login.asp';return false;"></td>
+            </tr>
+            -->
+          </table></td>
+        </tr>
+        <% end  %>
+      </table>
+
+      <BR>
+
+    <TD vAlign=top rowSpan=2>
+      <TABLE width=340 height=193 align="center" cellpadding="0" cellspacing="0">
+        <TBODY>
+        <TR>
+          <TD vAlign=top><%=@guanggao.ad2%>
+            <!--<object
+            codebase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0
+            height=190 width=350 align=absMiddle
+            classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000>
+            <param name="movie" value="/image/zh.swf">
+            <param name="quality" value="high">
+            <param name="SCALE" value="exactfit">
+            <embed src="/image/zh.swf"
+            width="350" height="190" align="absmiddle" quality="high"
+            pluginspage="http://www.macromedia.com/go/getflashplayer"
+            type="application/x-shockwave-flash" scale="exactfit"></embed>
+          </object>-->
+          </TD>
+        </TR></TBODY></TABLE></TD>
+    <TD class=Box1 vAlign=top align=middle width=200 rowSpan=2>
+      <DIV>
+      <DIV align=left><A href="/index/content/4"><IMG height=28
+      src="/image/ind_007.jpg" width=200 border=0></A></DIV></DIV>
+      <DIV class=Box2>
+      <DIV class=marT_1>
+      <DIV class=F12L22 align=left>
+      <TABLE class=marT_1 cellSpacing=0 cellPadding=2 width="88%" align=center
+      border=0>
+        <TBODY>
+        <TR>
+          <TD colspan="2" class=Col_B1 width="42%" height=32>
+            <P class=Col_B1>为更好地充分利用本学会人才和知识的优势，向有关部门或机构提供更为优质的服务，创新和繁荣学会业务活动，发挥学会在建设领域开展学术探讨、理论研究的领军作用，以便有的放矢地安排一些科研课题和咨询项目，活跃学会的学术活动...</P></TD></TR>
+        <TR>
+          <TD class=STYLE100 colSpan=2>  </TD></TR></TBODY></TABLE></DIV></DIV></DIV></TD></TR></TBODY></TABLE><!--学会介绍结束--><!--新闻通知开始-->
+<TABLE class=LTop1 height=260 cellSpacing=0 cellPadding=0 width=760 align=center
+border=0>
+  <TBODY>
+  <TR><!--News-->
+    <TD class=Box1 vAlign=top width=267 bgColor=#f7f9ff height=220>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=left><A href="/index/list/1"><IMG
+            height=24 src="/image/ind_a.jpg" width=267 border=0></A></TD>
+        </TR></TBODY></TABLE>
+      <TABLE class=marT_1 cellSpacing=2 cellPadding=0 width=100% align=center
+      border=0>
+        <TBODY>
+<!--列出新闻通知5-->
+<% for a1 in @article1  %>
+        <TR>
+          <TD width=12 height=15 valign="top" class=f14><IMG height=14
+            src="/image/doc.gif" width=9 align=absMiddle></TD>
+          <TD class=f14 width=232><span class="Col_B1"><a
+            href="/index/show/<%= a1.id %>"
+            target=_blank><%= h a1.title %></a></span></TD>
+        </TR>
+<% end  %>
+<!-- 结束 -->
+
+        <TR>
+          <TD height=20 colspan="2" align=right><A
+            href='/index/list/1'>更多&gt;&gt;</A>          </TD></TR></TBODY></TABLE></TD><!-- 新闻通知结束 -->
+    <TD width=10><SPAN class=style7></SPAN></TD><!-- 政策法规 -->
+    <TD class=Box1 vAlign=top width=267 bgColor=#f7f9ff style7>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=lian height=24><A
+            href="/index/list/2"><IMG height=24
+            src="/image/ind_b.jpg" width=267 border=0></A></TD>
+        </TR></TBODY></TABLE>
+      <TABLE class=marT_1 cellSpacing=2 cellPadding=0 width=100% align=center
+      border=0>
+        <TBODY>
+ <!--政策法规-->
+<% for a2 in @article2  %>
+        <TR>
+          <TD width=12 height=15 valign="top" class=f14><IMG height=14
+            src="/image/doc.gif" width=9 align=absMiddle></TD>
+          <TD class=f14 width=232><span class="Col_B1"><a
+            href="/index/show/<%= a2.id  %>"
+            target=_blank><%= a2.title  %></a></span></TD>
+        </TR>
+<% end  %>
+<!--end zcfg-->
+          <TR>
+            <TD height=20 colspan="2" align=right><A
+            href='/index/list/2'>更多&gt;&gt;</A> </TD>
+          </TR>
+        </TBODY>
+      </TABLE></TD>
+    <TD>&nbsp; </TD><!-- 网上订购 -->
+    <TD class=Box1 vAlign=top width=200 bgColor=#fffaf7>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=lian height=24><A
+            href="http://bbs.casc1986.com.cn"><IMG src="image/ind_e.jpg" width=200 border=0></A></TD>
+        </TR></TBODY></TABLE>
+       <TABLE class=marT_1 cellSpacing=2 cellPadding=0 width=100% align=center border=0>
+        <TBODY>
+          <TR><td><script src="http://bbs.casc1986.com.cn/Dv_News.asp?GetName=hottopic" charset="gb2312"></script></td></TR>
+        </TBODY>
+       </TABLE>
+      </TD></TR></TBODY></TABLE><!-- 网上订购部分结束 -->
+<TABLE class=LTop1 height=260 cellSpacing=0 cellPadding=0 width=760 align=center
+border=0>
+  <TBODY>
+  <TR>
+    <TD class=Box1 vAlign=top width=267 bgColor=#f7f9ff height=220>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=left><A href="/index/list/3"><IMG
+            height=24 src="/image/ind_c.jpg" width=267 border=0></A></TD>
+        </TR></TBODY></TABLE>
+      <TABLE class=marT_1 cellSpacing=2 cellPadding=0 width=100% align=center
+      border=0>
+        <TBODY>
+          <!--列出理论课题新闻;-->
+<% for a3 in @article3  %>
+        <TR>
+          <TD width=12 height=15 valign="top" class=f14><IMG height=14
+            src="/image/doc.gif" width=9 align=absMiddle></TD>
+          <TD class=f14 width=232><span class="Col_B1"><a
+            href="/index/show/<%= h a3.id  %>"
+            target=_blank><%= a3.title  %></a></span></TD>
+        </TR>
+<% end  %>
+<!--end 列出理论课题新闻;-->
+          <TR>
+            <TD height=20 colspan="2" align=right><A
+            href='/index/list/3'>更多&gt;&gt;</A> </TD>
+          </TR>
+        </TBODY>
+      </TABLE></TD>
+    <TD width=10>&nbsp; </TD>
+    <TD class=Box1 vAlign=top width=267 bgColor=#f7f9ff>
+      <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+        <TBODY>
+        <TR>
+          <TD height=24><A
+            href="/index/huiyilist"><IMG height=24
+            src="/image/ind_d.jpg" width=267 border=0></A></TD>
+        </TR></TBODY></TABLE>
+      <TABLE class=marT_1 cellSpacing=2 cellPadding=0 width=100% align=center
+      border=0>
+        <TBODY>
+          <!--列出会议报名;-->
+<% for huiyi in @huiyis  %>
+        <TR>
+          <TD width=12 height=15 valign="top" class=f14><IMG height=14
+            src="/image/doc.gif" width=9 align=absMiddle></TD>
+          <TD class=f14 width=232><span class="Col_B1">
+        <%if huiyi.status == 0%>
+          [报名中]
+        <%else%>
+          [已结束]
+        <%end%>
+        <a href="/index/huiyishow/<%= h huiyi.id  %>"
+            target=_blank><%= h huiyi.title  %></a></span></TD>
+        </TR>
+<% end  %>
+<!--列出会议报名;-->
+          <TR>
+            <TD height=20 colspan="2" align=right><A
+            href='/index/huiyilist'>更多&gt;&gt;</A> </TD>
+          </TR>
+        </TBODY>
+      </TABLE></TD><!-- 会议报名部分结束 -->
+    <TD>&nbsp; </TD>
+    <TD class=Box1 vAlign=top width=200 bgColor=#fffaf7>
+      <DIV></DIV><A href="http://121.52.212.115/lianxi.jsp"><IMG height=24
+      src="/image/ind_f.jpg" width=200 border=0> </A>
+      <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td><script src="http://bbs.casc1986.com.cn/Dv_News.asp?GetName=hot" charset="gb2312"></script></td>
+        </tr>
+      </table></TD>
+  </TR></TBODY></TABLE>
+<BR>
+    <TABLE cellSpacing=0 cellPadding=0 width=760 align=center border=0 height="55">
+  <TBODY>
+  <TR>
+    <TD align=center vAlign=middle class=box1>
+      <P align=center><STRONG>友情链接 </STRONG></P> </TD>
+    <TD class=box1 vAlign=middle align=middle width=696><A
+      href="http://www.51kj.com.cn/" target=_blank><IMG height=31
+      src="/image/51kj_88X31.gif" width=88> <A href="http://www.kj2000.com/"
+      target=_blank><IMG height=31 src="/image/kj2000logo.gif" width=88> <A
+      href="http://www.kuaiji.com.cn/" target=_blank><IMG height=31
+      src="/image/log.gif" width=88> <A href="http://www.szacc.com/"
+      target=_blank><IMG height=31 src="/image/logo123.jpg" width=88> <A
+      href="http://www.fa.net.cn/" target=_blank><IMG height=31
+      src="/image/logo.gif" width=88> <A href="http://www.fa.net.cn/"
+      target=_blank><IMG height=31 src="/image/logo1.gif" width=88> <A
+      href="http://www.fa.net.cn/" target=_blank><IMG height=31
+      src="/image/logo-1.jpg" width=88> </A></TD></TR>
+  <TR>
+    <TD align=left vAlign=top class=box1><div align="center"><strong>常用链接 </strong></div></TD>
+    <TD class=box1 vAlign=middle align=middle><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td align="center"><a href="http://www.cin.gov.cn/" target="_blank">建设部</a></td>
+        <td align="center"><a href="http://www.mof.gov.cn/mof/" target="_blank">财政部</a></td>
+        <td align="center"><a href="http://www.chinatax.gov.cn/n8136506/index.html" target="_blank">国家税务总局</a></td>
+        <td align="center"><a href="http://www.mca.gov.cn/" target="_blank">民政部</a></td>
+        <td align="center"><a href="http://www.chinanpo.gov.cn/web/index.do" target="_blank">中国民间组织网</a></td>
+        <td align="center"><a href="http://www.sohu.com" target="_blank">搜狐</a></td>
+        <td align="center"><a href="http://www.163.com" target="_blank">网易</a></td>
+        <td align="center"><a href="http://www.sina.com.cn" target="_blank">新浪</a></td>
+        <td align="center"><a href="http://www.baidu.com" target="_blank">百度</a></td>
+        <td align="center"><a href="http://www.people.com.cn" target="_blank">人民网</a></td>
+        </tr>
+    </table></TD>
+  </TR>
+  </TBODY></TABLE>

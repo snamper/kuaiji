@@ -1,0 +1,28 @@
+<div class="itemtitle">
+  <h3>用户管理</h3>
+  <ul class="tab1">
+    <li><a href="/article/trash"><span>新闻</span></a></li>
+    <li><a href="/category/trash"><span>新闻栏目</span></a></li>
+    <li class="current"><a href="/user/trash"><span>用户</span></a></li>
+    <li><a href="/group/trash"><span>用户组</span></a></li>
+    <li><a href="/ziyuan/trash"><span>资源</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>用户名</th><th>姓名</th><th>所在用户组</th><th>操作</th>
+    </tr>
+    <% for user in @users %>
+      <tr class="hover">
+        <td><%=h user.id %></td>
+        <td><%=h user.name %></td>
+        <td><%=h user.realname %></td>
+        <td><%=h user.group.name rescue nil %></td>
+        <td>
+          <%= link_to '还原', { :action => 'revert', :id => user }, :confirm => '确认要还原吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+<div class="itemtitle">
+  <h3>用户组管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/group/list"><span>列表</span></a></li>
+    <li><a href="/group/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>用户组名称</th><th>描述</th><th>操作</th>
+    </tr>
+    <% for group in @groups %>
+      <tr class="hover">
+        <td><%=h group.id %></td>
+        <td><%=h group.name %></td>
+        <td><%=h group.desc %></td>
+        <td>
+          <%= link_to '设置权限', :action => 'show', :id => group %>
+          <%= link_to '修改', :action => 'edit', :id => group %>
+          <%= link_to '删除', { :action => 'destroy', :id => group }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

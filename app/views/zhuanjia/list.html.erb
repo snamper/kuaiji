@@ -1,0 +1,27 @@
+<div class="itemtitle"><h3>专家库管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/zhuanjia/list"><span>列表</span></a></li>
+    <li><a href="/zhuanjia/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>专家编号</th><th>姓名</th><th>性别</th><th>出生日期</th><th>职称</th><th>操作</th>
+    </tr>
+    <% for zhuanjia in @zhuanjias %>
+      <tr class="hover">
+        <td><%=h zhuanjia.code %></td>
+        <td><a href="/index/zhuanjia/<%=zhuanjia.id-%>" target="_blank"><%=h zhuanjia.name %></a></td>
+        <td><%=h zhuanjia.sex %></td>
+        <td><%=h zhuanjia.birthday %></td>
+        <td><%=h zhuanjia.zhicheng.name rescue nil %></td>
+        <td>
+          <%= link_to '查看', :action => 'show', :id => zhuanjia %>
+          <%= link_to '修改', :action => 'edit', :id => zhuanjia %>
+          <%= link_to '删除', { :action => 'destroy', :id => zhuanjia }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

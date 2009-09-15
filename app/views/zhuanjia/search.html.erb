@@ -1,0 +1,10 @@
+<div class="itemtitle"><h3>专家库查询</h3>
+</div>
+<table class="tb tb2">
+<tbody>
+<% form_tag :action => 'result', :id => @zhuanjia do %>
+<tr><td colspan="2"><input type="submit" value="查询" name="settingsubmit" class="btn"/></td></tr>
+  <%= render :partial => 'searchform' %>
+<tr><td colspan="2"><input type="submit" value="查询" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

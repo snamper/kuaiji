@@ -1,0 +1,14 @@
+<tr><td class="td27" colspan="2">工作名称:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'workflow', 'name',:class => 'txt'  %>
+</td><td class="vtop tips2">工作名称</td></tr>
+
+<tr><td class="td27" colspan="2">步骤总数:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_field 'workflow', 'step_num',:class => 'txt'  %>
+</td><td class="vtop tips2">请填写步骤总数，只允许填写数字</td></tr>
+
+<tr><td class="td27" colspan="2">工作描述:</td></tr>
+<tr class="noborder"><td class="vtop rowform">
+<%= text_area 'workflow', 'desc', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+</td><td class="vtop tips2">工作描述</td></tr>

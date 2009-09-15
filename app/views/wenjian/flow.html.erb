@@ -1,0 +1,42 @@
+<div class="itemtitle"><h3>业务处理</h3>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr><td class="td27" colspan="2">业务类型:</td></tr>
+    <tr class="noborder"><td class="vtop rowform"><%= @flowstep.workflow.name rescue nil %></td>
+    <td class="vtop tips2"><%= @flowstep.workflow.desc rescue nil %></td>
+    </tr>
+
+    <tr><td class="td27" colspan="2">业务标题:</td></tr>
+    <tr class="noborder">
+      <td class="vtop rowform"><%= @wenjian.title rescue nil %></td>
+      <td class="vtop tips2"></td>
+    </tr>
+
+    <tr><td class="td27" colspan="2">业务内容:</td></tr>
+    <tr class="noborder"><td class="vtop rowform"><%= @wenjian.content rescue nil %></td><td class="vtop tips2"></td>
+    </tr>
+
+    <tr><td class="td27" colspan="2">待执行操作:</td></tr>
+    <tr class="noborder"><td class="vtop rowform"><%= @flowstep.name rescue nil %></td>
+    <td class="vtop tips2"><%= @flowstep.desc rescue nil %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="tb tb2">
+<tbody>
+<% form_tag :action => 'create' do %>
+
+  <tr><td class="td27" colspan="2">发送给:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+  <%= collection_select :wenjian, :workflow_id, Workflow.find(:all), :id, :name, {:include_blank => true } %>
+  </td><td class="vtop tips2">选择您要发送的人</td></tr>
+
+  <tr><td class="td27" colspan="2">内容批注:</td></tr>
+  <tr class="noborder"><td class="vtop rowform">
+  <%= text_area 'wenjian', 'content', :class => 'tarea', :size => '50x6', :onkeyup => 'textareasize(this)'  %>
+  </td><td class="vtop tips2">请输入批注内容</td></tr>
+
+  <tr><td colspan="2"><input type="submit" value="提交" name="settingsubmit" class="btn"/></td></tr>
+<% end %>
+</tbody></table>

@@ -1,0 +1,25 @@
+<div id="sdf" class="itemtitle"><h3>论文评审</h3>
+  <ul class="tab1">
+    <li><a href="/lunwen/list"><span>返回</span></a></li>
+  </ul>
+</div>
+<table width="100%" class="tb tb2">
+<tbody>
+	<tr class="header">
+      <th>序号</th><th>评分人</th><th>分数</th><th>评语</th><th>评分时间</th>
+    </tr>
+<% 
+i = 0
+for score in @scores
+	i += 1
+%>
+<tr>
+	<td><%= i%></td>
+	<td><%= score.user.name rescue nil%>（<%=score.user.realname rescue nil%>）</td>
+	<td><%= score.total_value%></td>
+	<td><%= score.content%></td>
+	<td><%=h score.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+</tr>
+<% end %>
+
+

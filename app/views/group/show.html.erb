@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>设置权限</title>
+
+<script language="javaScript" src="/tree/MzTreeView12.js"></script>
+<style>
+body {font:normal 12px 宋体}
+a.MzTreeview /* TreeView 链接的基本样式 */ { cursor: hand; color: #000080; margin-top: 5px; padding: 2 1 0 2; text-decoration: none; }
+.MzTreeview a.select /* TreeView 链接被选中时的样式 */ { color: highlighttext; background-color: highlight; }
+#kkk input {
+vertical-align:middle;
+}
+.MzTreeViewRow {border:none;width:500px;padding:0px;margin:0px;border-collapse:collapse}
+.MzTreeViewCell0 {border-bottom:1px solid #CCCCCC;padding:0px;margin:0px;}
+.MzTreeViewCell1 {border-bottom:1px solid #CCCCCC;border-left:1px solid #CCCCCC;width:200px;padding:0px;margin:0px;}
+</style>
+
+</head>
+<body>
+<% form_tag :action => 'saverole', :id => @group do %>
+<h3>请选择用户组的权限</h3>
+
+
+<table class='MzTreeViewRow' style="background:#EEEEEE;border-top:1px solid #CCCCCC;"><tr><th class='MzTreeViewCell0'>资源</th><th class='MzTreeViewCell1'>ID</th></tr></table>
+
+<div id="kkk"></div>
+
+
+	<script language="javascript" type="text/javascript">
+	<!--
+	var MzTreeViewTH="<table class='MzTreeViewRow'><tr><td class='MzTreeViewCell0'>";
+	var MzTreeViewTD="\"</td><td class='MzTreeViewCell1'>\"+ sid +\"</td></tr></table>\"";
+
+	window.tree = new MzTreeView("tree");
+	/*
+	tree.icons["property"] = "property.gif";
+	tree.icons["css"] = "collection.gif";
+	tree.icons["event"] = "collection.gif";
+	tree.icons["book"]  = "book.gif";
+	tree.iconsExpand["book"] = "bookopen.gif"; //展开时对应的图片
+	*/
+	tree.setIconPath("/tree/"); //可用相对路径
+	<% for ziyuan in @ziyuans  %>
+        <%
+          gp = ziyuan.groups.find(@group.id) rescue nil
+          if gp.nil?
+            chk = 0
+          else
+            chk = 1
+          end
+        %>
+      tree.N["<%= ziyuan.parent_id  %>_<%= ziyuan.id  %>"] = "ctrl:sel[];checked:<%=chk%>;T:<%= ziyuan.name  %>;url:<%= ziyuan.url  %>"
+    <% end %>
+
+	tree.setURL("#");
+	tree.wordLine = false;
+	tree.setTarget("main");
+	document.getElementById("kkk").innerHTML=tree.toString();
+	tree.expandAll();
+
+	//alert(document.getElementsByTagName("head")[0].innerHTML);
+	//alert(document.getElementById("kkk").innerHTML);
+
+	function showsel()
+	{
+		var es=document.getElementsByName("sel");
+		var out="";
+		for(var i=0;i<es.length;i++)
+		{
+			if (es[i].checked) out+=es[i].value+"\n";
+		}
+		alert(out);
+	}
+	//-->
+	</script>
+<p>
+<input type="button" onclick='showsel()' value='显示选中' style="display:none" />
+<input type="submit" value="保存" name="settingsubmit" class="btn"/>
+</p>
+<% end  %>
+</body>
+</html>

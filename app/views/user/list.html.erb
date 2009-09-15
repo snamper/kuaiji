@@ -1,0 +1,26 @@
+<div class="itemtitle">
+  <h3>用户管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/user/list"><span>列表</span></a></li>
+    <li><a href="/user/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>用户名</th><th>姓名</th><th>所在用户组</th><th>操作</th>
+    </tr>
+    <% for user in @users %>
+      <tr class="hover">
+        <td><%=h user.id %></td>
+        <td><%=h user.name %></td>
+        <td><%=h user.realname %></td>
+        <td><%=h user.group.name rescue nil %></td>
+        <td>
+          <%= link_to '修改', :action => 'edit', :id => user %>
+          <%= link_to '删除', { :action => 'destroy', :id => user }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

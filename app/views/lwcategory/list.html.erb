@@ -1,0 +1,29 @@
+<div class="itemtitle">
+  <h3>论文分类管理</h3>
+  <ul class="tab1">
+    <li class="current"><a href="/lwcategory/list"><span>列表</span></a></li>
+    <li><a href="/lwcategory/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table class="tb tb2">
+  <tbody>
+    <tr class="header">
+      <th>ID</th><th>分类</th><th>论文数</th><th>操作</th>
+    </tr>
+    <% 
+	i = 0
+	for lwcg in @lwcategorys
+		i += 1
+	%>
+      <tr class="hover">
+        <td><%=h i %></td>
+        <td><%=h lwcg.name %></td>
+        <td><%=h lwcg.lunwens.size %></td>
+        <td>
+          <%= link_to '修改', :action => 'edit', :id => lwcg %>
+          <%= link_to '删除', { :action => 'destroy', :id => lwcg }, :confirm => '确认要删除吗？', :method => :post %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,127 @@
+<div class="itemtitle"><h3>查看专家信息</h3>
+  <ul class="tab1">
+    <li><a href="/zhuanjia/list"><span>列表</span></a></li>
+    <li><a href="/zhuanjia/new"><span>添加</span></a></li>
+  </ul>
+</div>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center"><span class="vtop rowform"><img src="/upload/zhuanjia/<%=@zhuanjia.photo%>" width="107" height="129" /></span></td>
+    <td width="70%" valign="top"><table width="100%" border="0" cellspacing="3" cellpadding="0" class="tb tb2">
+      <tr>
+        <td width="15%" align="right"><span class="td27"><b>专家编号：</b></span></td>
+        <td width="33%"><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.code%></span></td>
+        <td width="16%" align="right"><span class="td27"><b>地区：</b></span></td>
+        <td width="36%"><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.diqu%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>专家姓名：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.name%></span></td>
+        <td align="right"><span class="td27"><b>出生日期：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.birthday%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>性别：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.sex%></span></td>
+        <td align="right"><span class="td27"><b>职务：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.zhiwu%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>年龄：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.age%></span></td>
+        <td align="right"><span class="td27"><b>政治面貌：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.political%></span></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb tb2">
+      <tr>
+        <td width="35%" align="right"><b>学历与学位：</b></td>
+        <td width="65%"><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.xueli%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>户口所在地：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.hukou%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>民族：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.nations%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><b>联系电话：</b></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.phone%></span></td>
+      </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>邮政编码：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.zipcode%></span></td>
+      </tr>
+    </table></td>
+    <td width="70%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="tb tb2">
+      <tr>
+        <td width="15%" align="right"><span class="td27"><b><b>职称</b>：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.zhicheng.name rescue nil%></span></td>
+        </tr>
+      <tr>
+        <td align="right"><span class="td27"><b><b>职称证件号</b>：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.zhichengno%></span></td>
+        </tr>
+      <tr>
+        <td align="right"><span class="td27"><b><b>身份证号</b>：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.idno%></span></td>
+        </tr>
+      <tr>
+        <td align="right">&nbsp;</td>
+        <td>&nbsp;</td>
+        </tr>
+      <tr>
+        <td align="right"><span class="td27"><b>电子信箱：</b></span></td>
+        <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.email%></span></td>
+        </tr>
+    </table></td>
+  </tr>
+</table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="tb tb2">
+<tbody>
+
+
+<tr><td width="10%" align="right" class="td27"><b><b>联系地址：</b></b></td>
+  <td width="90%"><span class="vtop rowform" style="color:#ff0000"><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.address%></span></span></td>
+</tr>
+<tr>
+  <td align="right" class="td27"><b>行业分类：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.hycategory.name rescue nil%></span></td>
+</tr>
+<tr>
+  <td align="right" class="td27"><b>业务特长：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.techang%></span></td>
+</tr>
+<tr>
+  <td align="right" class="td27"><b>工作单位：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.gzdanwei%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27"><b>推荐单位：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.tjdanwei%></span></td>
+</tr>
+
+
+
+
+<tr><td align="right" class="td27"><b>出版与发表：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.chuban%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27"><b>奖励奖项：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.jiangli%></span></td>
+</tr>
+
+
+<tr><td align="right" class="td27"><b>其他特长：</b></td>
+  <td><span class="vtop rowform" style="color:#ff0000"><%=@zhuanjia.othertechang%></span></td>
+</tr>
+</tbody></table>
